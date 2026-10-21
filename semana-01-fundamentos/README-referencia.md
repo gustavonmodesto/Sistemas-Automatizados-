@@ -1,21 +1,23 @@
 # Semana 1 — Fundamentos dos sistemas automatizados
 
 **UC Sistemas Automatizados** · Prof. Calvetti · Engenharia de Software — USJT
-**Autor:** Lucas Antonio Gomes (RA 823126987) · **Data:** [DATA DA ENTREGA]
+**Aluno:** Gustavo Nunes Modesto
+(RA 823126987) · 
+**Data:** 13/10/2026
 
 ## Conteúdo desta pasta
 
 | Arquivo | Conteúdo |
 |---|---|
-| `diagramas.drawio` | Arquivo **editável** do diagrams.net com 4 páginas (uma por exercício) |
+| `diagramas.drawio` | Arquivo **editável** do diagrams.net com 4 páginas, uma para cada exercício |
 | `porta-automatica.png` | Exercício obrigatório — porta automática |
 | `reservatorio.png` | Exercício adicional 1 — controle de nível |
 | `iluminacao.png` | Exercício adicional 2 — iluminação de estacionamento |
 | `proposta-propria-irrigacao.png` | Exercício adicional 3 — proposta própria (irrigação automática) |
 
-Para editar: abra <https://app.diagrams.net> → *Arquivo → Abrir de → Dispositivo* → `diagramas.drawio`. As páginas ficam nas abas da parte de baixo da tela.
+Para editar os diagramas, acesse <https://app.diagrams.net> → *Arquivo → Abrir de → Dispositivo* → `diagramas.drawio`. Cada exercício está em uma página, disponível nas abas inferiores.
 
-**Convenções usadas nos diagramas** (slide 56): seta entrando = entrada; bloco com verbo = processamento; seta saindo = saída; seta lateral vermelha = perturbação; nota = falha; seta tracejada azul = realimentação. Cores: azul = sensores/entradas, amarelo = processamento, verde = atuadores/saídas, cinza = planta.
+**Convenções utilizadas nos diagramas** (slide 56): seta de entrada = entrada; bloco com verbo = processamento; seta de saída = saída; seta lateral vermelha = perturbação; nota = falha; seta tracejada azul = realimentação. As cores seguem o padrão: azul para sensores/entradas, amarelo para processamento, verde para atuadores/saídas e cinza para a planta.
 
 ---
 
@@ -23,15 +25,22 @@ Para editar: abra <https://app.diagrams.net> → *Arquivo → Abrir de → Dispo
 
 ![Porta automática](porta-automatica.png)
 
-### Objetivo (uma frase)
-Abrir a porta para as pessoas que se aproximam e fechá-la depois da passagem, sem nunca fechar sobre alguém, mantendo a rota de fuga livre em emergência.
+### Objetivo
+
+Permitir a abertura automática da porta quando uma pessoa se aproxima e realizar o fechamento após sua passagem, evitando o fechamento sobre pessoas e mantendo a rota de fuga disponível em situações de emergência.
 
 ### Fronteira do sistema
-- **Dentro:** sensores de presença, barreira fotoelétrica, fins de curso, seletor de modo, botão de emergência, controlador (lógica da porta), acionamento do motor, motor, correia e folha da porta, sinalização.
-- **Fora:** pessoas, brigada/central de incêndio, rede elétrica do edifício, vento e ambiente.
+
+- **Dentro:** sensores de presença, barreira fotoelétrica, fins de curso, seletor de modo, botão de emergência, controlador (lógica da porta), acionamento do motor, motor, correia, folha da porta e sinalização.
+- **Fora:** pessoas, brigada/central de incêndio, rede elétrica do edifício, vento e condições do ambiente.
 
 ### Classificação
-**Automático** no ciclo normal: o sistema detecta a pessoa, decide e atua sem intervenção humana. A escolha do modo (AUTO / ABERTA / TRAVADA) e o rearme após emergência são **decisões humanas**. Tipo: automação **programável** simples (tempos e modos são parâmetros do controlador).
+
+O funcionamento normal é **automático**, pois o sistema identifica a presença de pessoas, toma decisões e executa os movimentos sem intervenção humana.
+
+A seleção dos modos (AUTO / ABERTA / TRAVADA) e o rearme após uma emergência dependem de **decisões humanas**.
+
+O sistema utiliza automação **programável** simples, permitindo configurar tempos e modos de funcionamento no controlador.
 
 ### Entradas, processamento e saídas
 
@@ -42,33 +51,36 @@ Abrir a porta para as pessoas que se aproximam e fechá-la depois da passagem, s
 | Entrada | Seletor de modo | AUTO / ABERTA / TRAVADA |
 | Entrada | Botão de emergência / alarme de incêndio | comando prioritário |
 | Entrada (realimentação) | Fins de curso ABERTA / FECHADA | posição real da folha |
-| Processamento | Lógica da porta | avaliar autorização, decidir abrir/manter/fechar, supervisionar falhas |
+| Processamento | Lógica da porta | verificar autorização, decidir abrir/manter/fechar e identificar falhas |
 | Saída | Acionamento do motor | abrir / fechar / parar |
 | Saída | Sinalização (LED + sonoro) | indicar falha e emergência |
 
 **Regras de processamento**
+
 1. Modo AUTO **e** presença detectada → ABRIR.
-2. Manter aberta enquanto houver presença **ou** barreira interrompida.
-3. Fechar após 5 s de área livre.
+2. Manter a porta aberta enquanto houver presença **ou** a barreira estiver interrompida.
+3. Fechar após 5 s com a área livre.
 4. Obstáculo durante o fechamento → PARAR e REABRIR.
-5. Emergência → ABRIR e manter aberta (prioridade sobre todas as regras).
+5. Emergência → ABRIR e manter aberta, com prioridade sobre as demais regras.
 6. Fim de curso não atingido em 8 s ou sinal inválido de sensor → falha.
 
 ### Realimentação, perturbação e falha
-- **Realimentação:** os fins de curso informam a posição real da folha; a lógica só considera "aberta/fechada" quando o fim de curso confirma, e interrompe o movimento se ele não chegar no tempo esperado.
-- **Perturbação:** vento, empurrão manual da folha, atrito ou sujeira no trilho.
-- **Falha principal:** sensor de presença/barreira com sinal inválido ou travado.
+
+- **Realimentação:** os fins de curso informam a posição real da porta. O controlador só considera a porta aberta ou fechada após a confirmação do respectivo fim de curso. Caso o sinal não seja recebido no tempo previsto, o movimento é interrompido.
+- **Perturbação:** vento, movimentação manual da folha, atrito ou sujeira no trilho.
+- **Falha principal:** sensor de presença ou barreira fotoelétrica apresentando sinal inválido ou travado.
 
 ### Comportamento seguro
-- Sinal inválido de barreira ou presença → **impedir o fechamento automático**, manter aberta e sinalizar falha.
-- Obstáculo ao fechar → **parar e reabrir**.
-- Emergência/incêndio → **abrir totalmente e manter aberta** (rota de fuga); só volta ao modo AUTO com rearme manual.
-- Motor sem resposta → desligar o motor e alarmar.
-- Falta de energia → folha liberada para abertura manual (estado mecânico seguro).
+
+- Sinal inválido da barreira ou do sensor de presença → **bloquear o fechamento automático**, manter a porta aberta e sinalizar a falha.
+- Obstáculo durante o fechamento → **parar e reabrir**.
+- Emergência/incêndio → **abrir completamente e manter aberta**, garantindo a rota de fuga. O retorno ao modo AUTO exige rearme manual.
+- Motor sem resposta → desligar o motor e acionar o alarme.
+- Falta de energia → liberar a folha para abertura manual, mantendo um estado mecânico seguro.
 
 ### Casos de teste e resultados
 
-Validação feita percorrendo o modelo cenário a cenário (slide 60):
+A validação foi realizada analisando o comportamento do modelo em diferentes cenários (slide 60):
 
 | Cenário | Entrada | Resposta esperada | Resposta do modelo | Situação |
 |---|---|---|---|---|
@@ -85,12 +97,12 @@ Validação feita percorrendo o modelo cenário a cenário (slide 60):
 
 ![Reservatório](reservatorio.png)
 
-- **Objetivo:** manter o nível entre 30 % e 80 %, evitando transbordamento e operação a seco.
-- **Classificação:** automático, **malha fechada** (o nível medido governa a bomba).
-- **Elementos:** planta = reservatório e tubulações; sensor = transmissor de nível (+ chaves ALTO-ALTO e BAIXO-BAIXO independentes); controlador = lógica de nível; atuador = bomba; perturbação = consumo variável.
-- **Setpoint:** liga abaixo de 30 %, desliga ao atingir 80 % — **dois limites** criam uma faixa estável e evitam liga/desliga rápido.
-- **Falhas:** transmissor travado (baixo ou alto), sinal fora da faixa, bomba sem resposta, **nível alto-alto**.
-- **Estado seguro:** nível alto-alto ou sensor inválido → bomba desligada + alarme; sem religamento automático após falha.
+- **Objetivo:** manter o nível do reservatório entre 30 % e 80 %, evitando transbordamento e funcionamento a seco.
+- **Classificação:** sistema automático de **malha fechada**, no qual o nível medido determina o acionamento da bomba.
+- **Elementos:** planta = reservatório e tubulações; sensor = transmissor de nível (+ chaves ALTO-ALTO e BAIXO-BAIXO independentes); controlador = lógica de nível; atuador = bomba; perturbação = variação do consumo.
+- **Setpoint:** a bomba liga quando o nível fica abaixo de 30 % e desliga ao atingir 80 %. Os **dois limites** estabelecem uma faixa de funcionamento estável, evitando acionamentos e desligamentos frequentes.
+- **Falhas:** transmissor travado (baixo ou alto), sinal fora da faixa, bomba sem resposta e **nível alto-alto**.
+- **Estado seguro:** nível alto-alto ou sensor inválido → bomba desligada + alarme, sem religamento automático após a falha.
 
 | Caso | Nível / condição | Estado anterior da bomba | Esperado | Situação |
 |---|---|---|---|---|
@@ -105,10 +117,10 @@ Validação feita percorrendo o modelo cenário a cenário (slide 60):
 
 ![Iluminação](iluminacao.png)
 
-- **Entradas:** luminosidade (ESCURO), presença (PRESENÇA), horário (HORÁRIO), chave manual.
-- **Processamento booleano (AUTO):** `LUZ = ESCURO AND PRESENÇA AND HORÁRIO`, mantida 3 min após a última presença.
-- **Modo manual:** `MAN_LIGA` acende e `MAN_DESL` apaga, com prioridade sobre o automático.
-- **Falha de sensor:** dentro do horário, fotocélula ou PIR inválido → luzes **acesas** + aviso (segurança das pessoas acima da economia).
+- **Entradas:** luminosidade (ESCURO), presença (PRESENÇA), horário (HORÁRIO) e chave manual.
+- **Processamento booleano (AUTO):** `LUZ = ESCURO AND PRESENÇA AND HORÁRIO`, mantendo a iluminação por 3 min após a última presença.
+- **Modo manual:** `MAN_LIGA` acende e `MAN_DESL` apaga as luzes, tendo prioridade sobre o modo automático.
+- **Falha de sensor:** durante o horário de funcionamento, caso a fotocélula ou o sensor PIR apresente sinal inválido, as luzes permanecem **acesas** e um aviso é emitido, priorizando a segurança das pessoas.
 
 | Caso | ESCURO | PRESENÇA | HORÁRIO | Modo | Esperado | Situação |
 |---|---|---|---|---|---|---|
@@ -123,12 +135,12 @@ Validação feita percorrendo o modelo cenário a cenário (slide 60):
 
 ![Irrigação](proposta-propria-irrigacao.png)
 
-- **Objetivo e usuário:** manter a umidade do solo de um jardim/horta de condomínio; usuário = morador ou zelador.
-- **Grau e tipo de automação:** automático com comando manual; automação programável (horários e limites ajustáveis); malha fechada pela umidade do solo.
+- **Objetivo e usuário:** controlar a umidade do solo de um jardim ou horta de condomínio, sendo utilizado por moradores ou pelo zelador.
+- **Grau e tipo de automação:** funcionamento automático com possibilidade de comando manual; automação programável, com horários e limites ajustáveis; controle em malha fechada pela umidade do solo.
 - **Modelo E–P–S:** umidade, chuva, relógio, botão manual e vazão → controlador → válvula solenoide e aviso.
-- **Perturbações:** sol/evaporação, chuva, vento, variação da pressão da rede.
-- **Riscos e estado seguro:** válvula presa aberta (desperdício/alagamento), sensor travado, falta d'água. Estado seguro = **válvula normalmente fechada**, tempo máximo de irrigação de 20 min, válvula mestre fecha em caso de vazamento.
-- **Melhoria justificada:** consultar a previsão do tempo e pular a rega se houver chuva prevista nas próximas 12 h, mantendo o sensor de chuva local como proteção se a internet falhar. Economia de água sem perder a proteção local.
+- **Perturbações:** incidência solar/evaporação, chuva, vento e variações na pressão da rede.
+- **Riscos e estado seguro:** válvula travada aberta (desperdício ou alagamento), sensor travado e falta d'água. O estado seguro utiliza **válvula normalmente fechada**, limite máximo de irrigação de 20 min e fechamento da válvula mestre em caso de vazamento.
+- **Melhoria proposta:** consultar a previsão do tempo para suspender a irrigação quando houver previsão de chuva nas próximas 12 h. O sensor de chuva local continua funcionando como proteção caso ocorra falha na conexão com a internet. Essa solução busca reduzir o consumo de água sem comprometer a proteção local.
 
 ---
 
@@ -136,30 +148,32 @@ Validação feita percorrendo o modelo cenário a cenário (slide 60):
 
 | Falha | Efeito | Detecção | Resposta segura |
 |---|---|---|---|
-| Sensor de presença travado | Porta não abre ou não fecha | Sinal sem variação por tempo excessivo (incoerência temporal) | Bloquear fechamento automático, manter aberta, sinalizar |
-| Barreira fotoelétrica com defeito | Risco de fechar sobre pessoa | Autoteste da barreira antes de cada fechamento | Não fechar; alarmar manutenção |
+| Sensor de presença travado | Porta não abre ou não fecha | Sinal sem variação por tempo excessivo (incoerência temporal) | Bloquear fechamento automático, manter aberta e sinalizar |
+| Barreira fotoelétrica com defeito | Risco de fechar sobre uma pessoa | Autoteste da barreira antes de cada fechamento | Impedir fechamento e sinalizar manutenção |
 | Perda de energia | Parada do sistema | Ausência de alimentação | Folha liberada para abertura manual (estado mecânico seguro) |
-| Comando indevido de fechar | Fechar com pessoa na passagem | Permissivos (barreira livre, sem presença) | Rejeitar o comando |
-| Atuador não responde | Porta não abre/fecha | Realimentação: fim de curso não chega em 8 s | Parar o motor e alarmar |
+| Comando indevido de fechar | Fechamento com pessoa na passagem | Permissivos (barreira livre, sem presença) | Rejeitar o comando |
+| Atuador não responde | Porta não abre/fecha | Realimentação: fim de curso não é atingido em 8 s | Parar o motor e acionar o alarme |
 
 ## Checklist de qualidade
 
-- [x] A fronteira do sistema está clara (retângulo tracejado em todos os diagramas).
-- [x] Cada seta possui significado (rótulos nas setas).
-- [x] Entradas e saídas não foram confundidas (cores e lados opostos).
-- [x] O processamento contém decisões verificáveis (regras numeradas).
-- [x] Há realimentação quando necessária (seta tracejada azul).
-- [x] Falhas e estado seguro foram tratados (notas inferiores).
-- [x] O README permite compreender o diagrama sem explicação oral.
+- [x] Fronteira do sistema identificada (retângulo tracejado em todos os diagramas).
+- [x] Todas as setas possuem identificação e significado.
+- [x] Entradas e saídas estão diferenciadas por cores e posicionamento.
+- [x] O processamento apresenta decisões verificáveis (regras numeradas).
+- [x] Realimentação representada quando necessária (seta tracejada azul).
+- [x] Falhas e estados seguros identificados (notas inferiores).
+- [x] O README permite compreender os diagramas sem necessidade de explicação oral.
 
 ## Active recall (respostas próprias)
 
-1. **Manual × semiautomático × automático:** quem decide e quem executa. No manual a pessoa decide e executa (abrir um registro); no semiautomático a pessoa autoriza e a máquina executa a sequência (uma lavadora que só começa quando se aperta INICIAR); no automático o sistema percebe, decide e atua sozinho (um termostato de geladeira).
-2. **Quando a realimentação é necessária:** quando perturbações ou incertezas impedem garantir o resultado só com uma ação fixa. Exemplo: o ar-condicionado precisa medir a temperatura porque a quantidade de pessoas na sala muda.
-3. **Sensor × atuador:** o sensor converte uma grandeza física em informação (termômetro do forno); o atuador converte um comando em ação física (resistência do forno).
-4. **Falha segura:** quando algo falha, o sistema vai para o estado que causa menos dano, e não necessariamente "desliga tudo". Exemplo: um elevador sem energia trava os freios em vez de soltar a cabine.
-5. **Software com consequência física:** um erro de lógica comanda um atuador real. Exemplo: um `>=` trocado por `>` em uma irrigação pode deixar a válvula aberta e alagar o jardim.
+1. **Manual × semiautomático × automático:** a diferença está em quem toma a decisão e executa a ação. No sistema manual, a pessoa decide e executa (abrir um registro). No semiautomático, a pessoa autoriza e a máquina executa a sequência (uma lavadora iniciada pelo botão INICIAR). No automático, o próprio sistema identifica a condição, decide e atua (termostato de geladeira).
+2. **Quando a realimentação é necessária:** quando perturbações ou variações impedem garantir o resultado apenas com uma ação fixa. Por exemplo, um ar-condicionado precisa medir a temperatura porque a quantidade de pessoas no ambiente pode variar.
+3. **Sensor × atuador:** o sensor transforma uma grandeza física em informação (termômetro de um forno), enquanto o atuador transforma um comando em ação física (resistência elétrica do forno).
+4. **Falha segura:** quando ocorre uma falha, o sistema deve assumir o estado que oferece menor risco, o que nem sempre significa desligar tudo. Por exemplo, em um elevador sem energia, os freios são acionados para impedir a movimentação da cabine.
+5. **Software com consequência física:** um erro na lógica pode gerar comandos incorretos para atuadores reais. Por exemplo, trocar `>=` por `>` em um sistema de irrigação pode fazer a válvula permanecer aberta além do previsto, causando alagamento.
 
 ## Limitações
 
-Os diagramas são modelos funcionais. Não dimensionam componentes nem substituem análise de risco normativa (por exemplo, normas de portas automáticas e de segurança de máquinas). Nenhum dado real de processo industrial foi utilizado.
+Os diagramas representam modelos funcionais dos sistemas. Não incluem dimensionamento de componentes nem substituem análises de risco exigidas por normas técnicas, como as aplicáveis a portas automáticas e à segurança de máquinas.
+
+Nenhum dado real de processo industrial foi utilizado.
