@@ -1,7 +1,10 @@
 **UC Sistemas Automatizados** · Prof. Calvetti · Engenharia de Software — USJT
+
 **Aluno:** Gustavo Nunes Modesto
 (RA 823126987) · 
+
 **Data:** 13/10/2026
+
 **Projeto no Wokwi:** desenvolvido e testado no Wokwi, com capturas disponíveis em `evidencias/`. O projeto não foi publicado. Para reproduzir a simulação, basta utilizar os arquivos `diagram.json` e `sketch.ino` em um novo projeto Arduino Uno, seguindo as instruções abaixo.
 
 ## Objetivo
