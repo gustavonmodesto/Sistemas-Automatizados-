@@ -10,8 +10,8 @@
 
 **Links (PLC Simulator Online):**
 
-- Obrigatório + extensões 1 a 3 (TON, pisca, CTU): [abrir programa](https://app.plcsimulator.online/ES1GCcj5YrwsCx91R7rU) ([https://app.plcsimulator.online/ES1GCcj5YrwsCx91R7rU](https://app.plcsimulator.online/ES1GCcj5YrwsCx91R7rU))
-- Extensão 4 (GRAFCET de enchimento em Ladder): [abrir programa](https://app.plcsimulator.online/kdpEjSv3irJ1KJjogAez) ([https://app.plcsimulator.online/kdpEjSv3irJ1KJjogAez](https://app.plcsimulator.online/kdpEjSv3irJ1KJjogAez))
+- Obrigatório + extensões 1 a 3 (TON, pisca, CTU): [abrir programa](https://app.plcsimulator.online/ES1GCcj5YrwsCx91R7rU) 
+- Extensão 4 (GRAFCET de enchimento em Ladder): [abrir programa](https://app.plcsimulator.online/kdpEjSv3irJ1KJjogAez) 
 
 ## Objetivo
 
