@@ -11,5 +11,5 @@ Repositório de Gustavo Nunes Modesto · Engenharia de Software · USJT.
 | [Semana 3](semana-03-sinais/) | Aquisição, escalonamento, filtragem e planilhas |
 | [Semana 4](semana-04-logica/) | Lógica combinacional, circuitos e Ladder |
 | [TP05](TP05/) | Sistemas sequenciais e GRAFCET |
-| [TP06](TP06/) | Entrega original de Gustavo: partida de motor com selo |
+| [TP06](TP06/) | Partida de motor com selo |
 | [TP07](TP07/) | Roteiro de temporização, contagem e sequências |
