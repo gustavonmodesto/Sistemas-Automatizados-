@@ -1,7 +1,7 @@
 # TP07 — Programação sequencial de CLP (temporização e contagem)
 
 **UC Sistemas Automatizados** · Professor. Calvetti · Engenharia de Software — USJT
-**Autor:** Gustavo Nunes Modesto (RA 823144057) · 
+**Aluno:** Gustavo Nunes Modesto (RA 823144057) · 
 **Data:** 09/10/2026 · **Simulador:** app.plcsimulator.online
 
 **Links (PLC Simulator Online):**
