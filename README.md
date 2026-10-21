@@ -1,27 +1,38 @@
-# Sistemas Automatizados
+# Sistemas Automatizados — Atividades práticas
 
-Repositório acadêmico de Gustavo — [gustavonmodesto](https://github.com/gustavonmodesto), para organizar atividades e registrar o desenvolvimento em Sistemas Automatizados.
+**Aluno:** Gustavo Nunes Modesto · **RA:** 823144057  
+**Curso:** Engenharia de Software — Universidade São Judas Tadeu, campus Mooca  
+**Professor:** Calvetti · **Semestre:** 2026.2
+
+Repositório acadêmico para organização das atividades e registro do desenvolvimento na UC Sistemas Automatizados. Cada pasta reúne a documentação disponível sobre o tema correspondente.
 
 ## Atividades
 
-| Atividade | Tema | Situação |
+| Semana | Tema | Ferramentas |
 |---|---|---|
-| 1 | [Fundamentos e modelos de automação](semana-01-fundamentos/README.md) | Pendente de desenvolvimento próprio |
-| 2 | [Sensores e transdutores](semana-02-sensores/README.md) | Pendente de desenvolvimento próprio |
-| 3 | [Aquisição, escalonamento e filtragem de sinais](semana-03-sinais/README.md) | Pendente de desenvolvimento próprio |
-| 4 | [Lógica combinacional e intertravamento](semana-04-logica/README.md) | Pendente de desenvolvimento próprio |
-| 5 | [Sistemas sequenciais e GRAFCET](TP05/README.md) | Pendente de desenvolvimento próprio |
-| 6 | [Partida de motor com selo em Ladder](TP06/README.md) | Entrega existente preservada |
-| 7 | [Temporização, contagem e sequências em Ladder](TP07/README.md) | Pendente de desenvolvimento próprio |
+| 1 | [Fundamentos e modelos de automação](semana-01-fundamentos/README.md) | diagrams.net |
+| 2 | [Sensores e transdutores](semana-02-sensores/README.md) | Wokwi — Arduino Uno |
+| 3 | [Aquisição, escalonamento e filtragem de sinais](semana-03-sinais/README.md) | Wokwi e planilhas |
+| 4 | [Lógica combinacional e intertravamento](semana-04-logica/README.md) | CircuitVerse e PLC Simulator Online |
+| 5 | [Sistemas sequenciais e GRAFCET](TP05/README.md) | diagrams.net |
+| 6 | [Partida de motor com selo em Ladder](TP06/README.md) | PLC Simulator Online |
+| 7 | [Temporização, contagem e sequências em Ladder](TP07/README.md) | PLC Simulator Online |
 
-## Atividade 6
+As ferramentas indicadas correspondem aos temas e roteiros de estudo. O conteúdo disponível e a etapa de desenvolvimento estão descritos no README de cada atividade.
 
-A entrega existente trata de partida de motor com selo, parada, emergência e sobrecarga em Ladder. Os arquivos de testes e as sete capturas permanecem em seus caminhos originais, sem alterações. A documentação original está preservada em [TP06/README-original.md](TP06/README-original.md).
+## Atividade 6 — Partida de motor com selo
 
-Os resultados aprovados são os relatados na entrega original; esta organização não inclui nova execução do simulador.
+A entrega reúne a lógica de partida de motor com selo, parada, emergência e sobrecarga em Ladder.
+
+- [Documentação da atividade](TP06/README.md)
+- [Documentação original](TP06/README-original.md)
+- [Casos de teste](casos_teste.csv)
+- [Capturas da simulação](capturas/)
+
+Os arquivos da entrega existente foram preservados. Os resultados registrados correspondem à execução documentada originalmente.
 
 ## Referências e autoria
 
-O ZIP `sistemas-automatizados-main.zip`, fornecido como material de estudo, identifica **Lucas Antonio Gomes** como autor. Seus códigos, diagramas, capturas, planilhas e relatos de testes não são apresentados como produção de Gustavo. O material completo fica separado no pacote de revisão e não integra esta pasta de publicação. Veja [AUTORIA.md](AUTORIA.md).
+O material de estudo fornecido no arquivo `sistemas-automatizados-main.zip` identifica **Lucas Antonio Gomes** como autor. Seus códigos, diagramas, capturas, planilhas e resultados são referências e não são apresentados como produção de Gustavo.
 
-As demais atividades estão planejadas, sem alegação de conclusão. Este README e os roteiros de organização foram preparados com assistência de IA e devem ser revisados por Gustavo.
+Os arquivos completos dessa referência permanecem separados do conteúdo publicado. Mais informações em [AUTORIA.md](AUTORIA.md).
