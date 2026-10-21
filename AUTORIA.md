@@ -19,3 +19,11 @@ Os links de simuladores e planilhas dos documentos de Lucas são referências de
 ## Documentação nova
 
 O índice principal, os roteiros de atividades, esta nota e o guia de publicação foram preparados com assistência de IA para revisão por Gustavo. Não representam execução de atividades práticas ou geração de evidências próprias.
+
+## Atualização da organização — 21/10/2026
+
+As seções anteriores registram a preparação anterior do pacote. A afirmação sobre material fora de `publicar/` descreve aquele pacote, não a disposição atual deste repositório: arquivos de referência já haviam sido incorporados à branch main antes desta organização.
+
+Nesta revisão, esses arquivos foram somente organizados, mantendo os créditos. Os destinos foram conferidos por identidade dos blobs Git com o repositório de referência https://github.com/lucasantgomes/sistemas-automatizados. Não houve importação de novos arquivos desse repositório.
+
+A entrega original de Gustavo está agora em `TP06/`: README do commit original em `README-entrega.md`, CSV original recuperado em `casos_teste.csv` e sete imagens em `capturas/`. A cópia anterior `README-original.md` também permanece intacta. O material de referência sobre TP06 está em `TP06/referencia/`.

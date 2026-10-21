@@ -1,0 +1,8 @@
+﻿ID,Condicao_inicial,Acao,Esperado,Obtido,Situacao
+T01,tudo saudavel (STOP_OK=1 EMG_OK=1 OL_OK=1) e MOTOR=0,START=1,MOTOR=1,MOTOR=1,Aprovado
+T02,MOTOR=1,START=0,MOTOR=1 (selo mantem),MOTOR=1,Aprovado
+T03,MOTOR=1,STOP_OK=0,MOTOR=0,MOTOR=0,Aprovado
+T04,MOTOR=1,EMG_OK=0,MOTOR=0,MOTOR=0,Aprovado
+T05,MOTOR=0 e EMG_OK=0,START=1,MOTOR=0,MOTOR=0,Aprovado
+T06,MOTOR=0 e OL_OK=0,START=1,MOTOR=0,MOTOR=0,Aprovado
+T07,MOTOR=1,OL_OK=0 e depois OL_OK=1 (sem novo START),MOTOR=0 apos a falha e continua 0 apos liberar a falha,MOTOR=0 e continuou 0,Aprovado
