@@ -5,7 +5,7 @@
 **Aluno:** Gustavo Nunes Modesto
 (RA 823126987) · 
 
-**Data:** 13/10/2026
+**Data:** 13/09/2026
 
 ## Simulações
 
