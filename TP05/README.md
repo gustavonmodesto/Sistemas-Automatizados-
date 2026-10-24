@@ -3,7 +3,7 @@
 **UC Sistemas Automatizados** · Prof. Calvetti · Engenharia de Software — USJT
 **Aluno:** Gustavo Nunes Modesto
 (RA 823126987) · 
-**Data:** 21/10/2026
+**Data:** 26/09/2026
 
 ## Objetivo
 
