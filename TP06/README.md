@@ -1,5 +1,10 @@
 # P06 – Partida de motor com selo (Ladder)
 
+**UC Sistemas Automatizados** · Prof. Calvetti · Engenharia de Software — USJT
+**Aluno:** Gustavo Nunes Modesto
+(RA 823126987) · 
+**Data:** 02/10/2026
+
 Atividade da Semana 6 de Sistemas Automatizados (CLP e linguagem Ladder).
 Programa Ladder de partida e parada de um motor com retenção (selo), parada prioritária, emergência e sobrecarga, executado no PLC Simulator Online.
 
